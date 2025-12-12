@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .title }} - Kanyaars Portal</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="/">Kanyaars Portal</a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/admin">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="project-detail">
+            <div class="container">
+                <a href="/projects" class="btn btn-link">&larr; Back to Projects</a>
+                
+                <div class="project-header">
+                    {{ if .project.icon_url }}
+                    <img src="{{ .project.icon_url }}" alt="{{ .project.name }}" class="project-icon-large">
+                    {{ end }}
+                    <h1>{{ .project.name }}</h1>
+                    <p class="project-status">Status: <span class="badge">{{ .project.status }}</span></p>
+                </div>
+
+                <div class="project-content">
+                    <h2>About</h2>
+                    <p>{{ .project.description }}</p>
+
+                    <h2>Visit Project</h2>
+                    <a href="{{ .project.url }}" target="_blank" class="btn btn-primary">Go to {{ .project.name }}</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Kanyaars. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

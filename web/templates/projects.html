@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .title }} - Kanyaars Portal</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="/">Kanyaars Portal</a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/admin">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="projects-section">
+            <div class="container">
+                <h1>Our Projects</h1>
+                <div class="projects-grid">
+                    {{ range .projects }}
+                    <div class="project-card">
+                        {{ if .icon_url }}
+                        <img src="{{ .icon_url }}" alt="{{ .name }}" class="project-icon">
+                        {{ end }}
+                        <h3>{{ .name }}</h3>
+                        <p>{{ .description }}</p>
+                        <a href="/projects/{{ .slug }}" class="btn btn-secondary">View Project</a>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Kanyaars. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

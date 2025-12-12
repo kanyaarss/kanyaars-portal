@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .title }} - Kanyaars Portal</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="/">Kanyaars Portal</a>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/admin">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {{ block "content" . }}{{ end }}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Kanyaars. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
