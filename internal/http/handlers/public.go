@@ -66,19 +66,30 @@ func (h *PublicHandler) Projects(c *gin.Context) {
 func (h *PublicHandler) ProjectDetail(c *gin.Context) {
 	slug := c.Param("slug")
 
-	var project map[string]interface{}
+	var id int
+	var name, slug2, description, url, iconURL, status string
 	err := h.db.QueryRow(
 		"SELECT id, name, slug, description, url, icon_url, status FROM projects WHERE slug = $1",
 		slug,
 	).Scan(
-		&project["id"],
-		&project["name"],
-		&project["slug"],
-		&project["description"],
-		&project["url"],
-		&project["icon_url"],
-		&project["status"],
+		&id,
+		&name,
+		&slug2,
+		&description,
+		&url,
+		&iconURL,
+		&status,
 	)
+
+	project := map[string]interface{}{
+		"id":          id,
+		"name":        name,
+		"slug":        slug2,
+		"description": description,
+		"url":         url,
+		"icon_url":    iconURL,
+		"status":      status,
+	}
 
 	if err == sql.ErrNoRows {
 		c.HTML(http.StatusNotFound, "error.html", gin.H{
