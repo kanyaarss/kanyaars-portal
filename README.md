@@ -430,7 +430,7 @@ kanyaars-portal/
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/kanyaars/kanyaars-portal.git
+   git clone https://github.com/kanyaarss/kanyaars-portal.git
    cd kanyaars-portal
    ```
 

@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/kanyaars/kanyaars-portal/internal/config"
-	"github.com/kanyaars/kanyaars-portal/internal/database"
-	"github.com/kanyaars/kanyaars-portal/internal/http"
+	"github.com/kanyaarss/kanyaars-portal/internal/config"
+	"github.com/kanyaarss/kanyaars-portal/internal/database"
+	"github.com/kanyaarss/kanyaars-portal/internal/http"
 )
 
 func main() {
