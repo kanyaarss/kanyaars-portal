@@ -3,8 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
-
+	
 	"github.com/kanyaarss/kanyaars-portal/internal/config"
 	"github.com/kanyaarss/kanyaars-portal/internal/database"
 	"github.com/kanyaarss/kanyaars-portal/internal/http"
