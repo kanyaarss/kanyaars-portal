@@ -1,61 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="EN">
+  <head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{{ .title }} - Kanyaars Portal</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <a href="/">Kanyaars Portal</a>
-            </div>
-            <ul class="navbar-menu">
-                <li><a href="/">Home</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/admin">Admin</a></li>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <script src="/static/js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="flex flex-col min-h-[70vh] bg-black">
+      <div class="">
+        <a href="#mainContent" class="sr-only">Skip to content</a>
+      </div>
+      <header role="banner" class="fixed left-0 bottom-6 md:bottom-auto md:top-0 w-full md:h-full z-50 pointer-events-none -type-alternate">
+        <div class="flex justify-between items-center md:h-[72px] pointer-events-auto mx-6 text-white">
+          <nav>
+            <ul class="header-nav-list flex items-center gap-7 relative z-20">
+              <li class="hidden md:block">
+                <button class="text-base font-semibold transition-opacity duration-300 px-2.5 z-10" aria-disabled="false">About Kay</button>
+              </li>
+              <li class="hidden md:block">
+                <button class="text-base font-semibold transition-opacity duration-300 px-2.5 z-10" aria-disabled="false">Projects</button>
+              </li>
+              <li class="hidden md:block">
+                <a class="text-base font-semibold transition-opacity duration-300 px-2.5 z-10" href="/tour/" aria-disabled="false" data-discover="true">Tour</a>
+              </li>
+              <li class="hidden md:block">
+                <button class="text-base font-semibold transition-opacity duration-300 px-2.5 z-10 fixed bottom-6 left-6" aria-disabled="false">Explore</button>
+              </li>
+              <li class="hidden md:block">
+                <button class="text-base font-semibold transition-opacity duration-300 px-2.5 z-10 fixed bottom-6 right-6">®</button>
+              </li>
+              <li class="md:hidden">
+                <button class="text-neutral-300 border-neutral-300 font-bold antialiased cursor-pointer px-2 h-8 relative border block">Menu</button>
+              </li>
             </ul>
-        </div>
-    </nav>
-
-    <main class="main-content">
-        <section class="hero">
-            <div class="container">
-                <h1>Welcome to Kanyaars Portal</h1>
-                <p>Explore all our amazing projects in one place</p>
-                <a href="/projects" class="btn btn-primary">View Projects</a>
+            <div role="dialog" aria-modal="true" class="fixed md:absolute top-0 bottom-0 max-w-[353px] w-full transition-all z-[20] left-0 text-left invisible -translate-x-full duration-[500ms] ease-[cubic-bezier(.165,.84,.44,1)]" style="width:calc(100vw - 135px)">
+              <div class="absolute left-0 top-0 bottom-0 h-full w-full flex flex-col justify-between items-start transition-[opacity,visibility] ease-in-out duration-[350ms] py-28 px-6 invisible opacity-0">
+                <ul class="header-nav-list">
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:250ms">
+                    <button aria-disabled="false">About Kay</button>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:300ms">
+                    <button aria-disabled="false">Projects</button>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:350ms">
+                    <a href="/tour/" aria-disabled="false" data-discover="true">Tour</a>
+                  </li>
+                </ul>
+                <ul class="header-nav-list mobile-explore-menu">
+                  <li class="md:hidden mt-6 mb-6 font-bold transition-[opacity,visibility,transform] ease-in-out duration-1000 delay-[200ms] opacity-0 invisible -translate-x-[10px] pointer-events-none">
+                    <h3>Explore</h3>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:250ms">
+                    <a href="/" aria-disabled="false" data-discover="true">Home</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:300ms">
+                    <a href="/roadmap/" aria-disabled="false" data-discover="true">Road Map</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:350ms">
+                    <a href="/projects-story/" aria-disabled="false" data-discover="true">Projects Story</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:400ms">
+                    <a href="/kanyaarsgpt/" aria-disabled="false" data-discover="true">KanyaarsGPT</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:450ms">
+                    <a href="/solokay/" aria-disabled="false" data-discover="true">Kanyaars Vs EVERYBODY</a>
+                  </li>                  
+                </ul>
+              </div>
+              <div class="absolute left-0 top-0 bottom-0 h-full w-full transition-[opacity,visibility] ease-in-out duration-[350ms] px-6 pt-28 pb-24 invisible opacity-0">
+                <ul class="header-nav-list">
+                  <li class="md:hidden mb-6 font-bold transition-[opacity,visibility,transform] ease-in-out duration-1000 delay-[200ms] opacity-0 invisible -translate-x-[10px] pointer-events-none">
+                    <h3>Projects</h3>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:250ms">
+                    <a class="block" to="/kanyaars-alter-ego/" href="/kanyaars-alter-ego/" aria-disabled="false">Kanyaars Alter Ego</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:300ms">
+                    <a class="block" href="/shortlink-kay/" aria-disabled="false" data-discover="true">Shortlink Kay</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:350ms">
+                    <a class="block" to="/satelit-kanyaars/" href="/satelit-kanyaars/" aria-disabled="false">Satelit Kanyaars</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:400ms">
+                    <a class="block" to="/bot-nawala-checker/" href="/bot-nawala-checker/" aria-disabled="false">BOT Nawala Checker</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:450ms">
+                    <a class="block" to="/seo-kay/" href="seo-kay/" aria-disabled="false">SEO Kay</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:500ms">
+                    <a class="block" to="/0xcafebabe-kanyaars/" href="/0xcafebabe-kanyaars/" aria-disabled="false">0xCAFEBABE Kanyaars</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="absolute left-0 top-0 bottom-0 h-full w-full transition-[opacity,visibility] ease-in-out duration-[350ms] px-6 pt-28 pb-24 invisible opacity-0">
+                <ul class="header-nav-list">
+                  <li class="md:hidden mb-6 font-bold transition-[opacity,visibility,transform] ease-in-out duration-1000 delay-[200ms] opacity-0 invisible -translate-x-[10px] pointer-events-none">
+                    <h3>Tour</h3>
+                  </li>
+                </ul>
+              </div>
+              <div class="absolute left-0 top-0 bottom-0 h-full w-full transition-[opacity,visibility] ease-in-out duration-[350ms] flex items-end justify-start px-6 pt-28 pb-20 invisible opacity-0">
+                <ul class="header-nav-list">
+                  <li class="md:hidden mb-6 font-bold transition-[opacity,visibility,transform] ease-in-out duration-1000 delay-[200ms] opacity-0 invisible -translate-x-[10px] pointer-events-none">
+                    <h3>Explore</h3>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:250ms">
+                    <a class="block" href="/" aria-disabled="false" data-discover="true">Home</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:300ms">
+                    <a class="block" href="/roadmap/" aria-disabled="false" data-discover="true">Road Map</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:350ms">
+                    <a class="block" href="/projects-story/" aria-disabled="false" data-discover="true">Projects Story</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:400ms">
+                    <a class="block" href="/kanyaarsgpt/" aria-disabled="false" data-discover="true">KanyaarsGPT</a>
+                  </li>
+                  <li class="font-bold text-2xl leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:450ms">
+                    <a class="block" href="/solokay/" aria-disabled="false" data-discover="true">Kanyaars Vs EVERYBODY</a>
+                </ul>
+              </div>
             </div>
-        </section>
-
-        <section class="features">
-            <div class="container">
-                <h2>Our Services</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>Fast & Reliable</h3>
-                        <p>Built with modern technology for optimal performance</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Secure</h3>
-                        <p>Enterprise-grade security for your peace of mind</p>
-                    </div>
-                    <div class="feature-card">
-                        <h3>Scalable</h3>
-                        <p>Designed to grow with your needs</p>
-                    </div>
+            <div role="dialog" aria-modal="true" class="fixed md:absolute top-0 bottom-0 max-w-[353px] w-full transition-all z-[20] right-0 text-right invisible translate-x-full duration-[500ms] ease-[cubic-bezier(.165,.84,.44,1)]" style="max-width:135px">
+              <div class="absolute left-0 top-0 bottom-0 h-full w-full flex flex-col justify-between items-end transition-[opacity,visibility] ease-in-out duration-[350ms] py-28 px-6 md:pb-20 invisible opacity-0">
+                <span></span>
+                <ul class="header-nav-list">
+                  <li class="font-bold text-base leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:300ms">
+                    <a href="/policies/terms-of-service" aria-disabled="false" data-discover="true">Terms</a>
+                  </li>
+                  <li class="font-bold text-base leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:350ms">
+                    <a href="/policies/privacy-policy" aria-disabled="false" data-discover="true">Privacy</a>
+                  </li>
+                  <li class="font-bold text-base leading-tight transition-[opacity,visibility,transform] ease-in-out duration-1000 opacity-0 invisible -translate-x-[10px] pointer-events-none" style="transition-delay:400ms">
+                    <a href="/pages/faqs" aria-disabled="false" data-discover="true">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <h1 class="left-1/2 -translate-x-1/2 fixed top-10  md:absolute md:top-auto">
+            <a class="font-bold" href="/" data-discover="true">Kanyaars Portal</a>
+          </h1>
+        </div>
+      </header>
+      <main role="main" id="mainContent" class="flex-grow">
+        <div class="bg-black">
+          <div style="transition-property:visibility,opacity;opacity:1;visibility:visible" class="bg-white flex items-center justify-center fixed top-0 left-0 right-0 bottom-0 w-screen h-screen h-screen-ios duration-1000 z-[51]">
+            <h2 class="loader-title font-semibold">Kanyaars Portal</h2>
+          </div>
+          <div style="filter:blur(25px)">
+            <section>
+              <div class="room-wrapper h-screen h-screen-ios">
+                <div class="relative min-w-full min-h-full overflow-hidden" id="room" style="width:0px;height:0px">
+                  <img alt="" src="https://cdn.shopify.com/s/files/1/0454/5616/2972/files/JUST_BOXES_1.png?v=1756328308?w=100" class="w-full h-full absolute top-0 left-0 pointer-events-none blur-xl transition-opacity duration-200 ease-in-out z-10 opacity-100" />
+                  <picture>
+                    <source media="(min-width: 1024px)" srcSet="" />
+                    <source media="(min-height: 600px)" srcSet="" />
+                    <source media="(min-height: 500px)" srcSet="" />
+                    <img class="w-full pointer-events-none" src="" srcSet="" alt="" />
+                  </picture>
+                  <div class="absolute top-0 left-0 w-full h-full">
+                    <a class="absolute before:block before:h-14 before:w-14 before:absolute before:-top-4 md:before:hidden z-20 before:-left-4" style="left:28.919629196646024%;top:59.284239361433535%" href="/roadmap/" aria-disabled="false" data-discover="true">
+                      <span class="border  h-6 w-6 overflow-hidden transition-all duration-500   flex items-center justify-between ease-in-out font-bold" style="border-radius:12.5px;box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.2);text-shadow:0 0 10px rgba(0, 0, 0, 0.3);width:24px;position:absolute;border-color:white;color:white">
+                        <span class="block absolute" style="top:6px;left:5px;right:auto">
+                          <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" class="-scale-x-100">
+                            <line x1="11.7052" y1="4.77742" x2="6.8748" y2="9.60777" stroke-width="2"></line>
+                            <path d="M10.2912 4.77745L6.89487 1.38135" stroke-width="2"></path>
+                            <line x1="10.5151" y1="5.45581" x2="0.998047" y2="5.45581" stroke-width="2"></line>
+                          </svg>
+                        </span>
+                        <span class="opacity-0 transition-opacity duration-500 ease-in-out block antialiased  " style="white-space:nowrap;position:absolute;top:0;line-height:1;opacity:0;padding:3px 15px 3px 22px">Enter Road Map</span>
+                      </span>
+                    </a>
+                    <a class="absolute before:block before:h-14 before:w-14 before:absolute before:-top-4 md:before:hidden z-20 before:-left-4" style="left:44.09939805270937%;top:12.137070223519364%" href="/projects/" aria-disabled="false" data-discover="true">
+                      <span class="border  h-6 w-6 overflow-hidden transition-all duration-500   flex items-center justify-between ease-in-out font-bold" style="border-radius:12.5px;box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.2);text-shadow:0 0 10px rgba(0, 0, 0, 0.3);width:24px;position:absolute;border-color:white;color:white">
+                        <span class="block absolute" style="top:6px;left:5px;right:auto">
+                          <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" class="-scale-x-100">
+                            <line x1="11.7052" y1="4.77742" x2="6.8748" y2="9.60777" stroke-width="2"></line>
+                            <path d="M10.2912 4.77745L6.89487 1.38135" stroke-width="2"></path>
+                            <line x1="10.5151" y1="5.45581" x2="0.998047" y2="5.45581" stroke-width="2"></line>
+                          </svg>
+                        </span>
+                        <span class="opacity-0 transition-opacity duration-500 ease-in-out block antialiased  " style="white-space:nowrap;position:absolute;top:0;line-height:1;opacity:0;padding:3px 15px 3px 22px">Enter Projects</span>
+                      </span>
+                    </a>
+                    <a class="absolute before:block before:h-14 before:w-14 before:absolute before:-top-4 md:before:hidden z-20 before:-right-4" style="left:75.03319600567878%;top:15.589421648099371%" href="/kanyaarsgpt/" aria-disabled="false" data-discover="true">
+                      <span class="border  h-6 w-6 overflow-hidden transition-all duration-500   flex items-center justify-between ease-in-out font-bold" style="border-radius:12.5px;box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.2);text-shadow:0 0 10px rgba(0, 0, 0, 0.3);width:24px;position:absolute;right:0;left:auto;border-color:white;color:white">
+                        <span class="block absolute" style="top:6px;left:auto;right:5px">
+                          <svg width="13" height="11" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="white" class="rotate-0">
+                            <line x1="11.7052" y1="4.77742" x2="6.8748" y2="9.60777" stroke-width="2"></line>
+                            <path d="M10.2912 4.77745L6.89487 1.38135" stroke-width="2"></path>
+                            <line x1="10.5151" y1="5.45581" x2="0.998047" y2="5.45581" stroke-width="2"></line>
+                          </svg>
+                        </span>
+                        <span class="opacity-0 transition-opacity duration-500 ease-in-out block antialiased  " style="white-space:nowrap;position:absolute;top:0;line-height:1;opacity:0;padding:3px 22px 3px 15px;right:0;left:auto">Enter Kanyaars Alter Ego</span>
+                      </span>
+                    </a>
+                  </div>
                 </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Kanyaars. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="/static/js/main.js"></script>
+              </div>
+            </section>
+          </div>
+      </main>
+    </div>
 </body>
 </html>

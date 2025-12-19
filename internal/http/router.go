@@ -20,6 +20,9 @@ func NewRouter(cfg *config.Config, db *sql.DB) *gin.Engine {
 
 	router := gin.New()
 
+	// Load HTML Templates
+	router.LoadHTMLGlob("web/templates/*.html")
+	
 	// Global middleware
 	router.Use(middleware.Logger())
 	router.Use(middleware.Recovery())

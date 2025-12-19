@@ -3,6 +3,7 @@ package middleware
 import (
 	"log"
 	"net/http"
+	"runtime/debug"
 
 	"github.com/gin-gonic/gin"
 	"github.com/kanyaarss/kanyaars-portal/internal/domain"
@@ -13,7 +14,11 @@ func Recovery() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		defer func() {
 			if err := recover(); err != nil {
-				log.Printf("Panic recovered: %v", err)
+				log.Printf(
+					"🔥 PANIC: %v\n%s",
+					err,
+					debug.Stack(),
+				)
 
 				c.JSON(http.StatusInternalServerError, domain.NewErrorResponse(
 					"Internal Server Error",

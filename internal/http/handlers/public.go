@@ -25,10 +25,12 @@ func (h *PublicHandler) Home(c *gin.Context) {
 
 // Projects renders the projects page
 func (h *PublicHandler) Projects(c *gin.Context) {
-	// Fetch projects from database
-	rows, err := h.db.Query(
-		"SELECT id, name, slug, description, url, icon_url, status FROM projects WHERE status = 'active' ORDER BY \"order\" ASC",
-	)
+	rows, err := h.db.Query(`
+		SELECT id, name, slug, description, url, icon_url, status
+		FROM projects
+		WHERE status = 'active'
+		ORDER BY "order" ASC
+	`)
 	if err != nil {
 		c.HTML(http.StatusInternalServerError, "error.html", gin.H{
 			"error": "Failed to fetch projects",
@@ -37,15 +39,32 @@ func (h *PublicHandler) Projects(c *gin.Context) {
 	}
 	defer rows.Close()
 
-	var projects []map[string]interface{}
+	projects := []map[string]interface{}{}
+
 	for rows.Next() {
-		var id int
-		var name, slug, description, url, iconURL, status string
-		if err := rows.Scan(&id, &name, &slug, &description, &url, &iconURL, &status); err != nil {
+		var (
+			id          int
+			name        string
+			slug        string
+			description string
+			url         string
+			iconURL     string
+			status      string
+		)
+
+		if err := rows.Scan(
+			&id,
+			&name,
+			&slug,
+			&description,
+			&url,
+			&iconURL,
+			&status,
+		); err != nil {
 			continue
 		}
 
-		projects = append(projects, map[string]interface{}{
+		projects = append(projects, gin.H{
 			"id":          id,
 			"name":        name,
 			"slug":        slug,
@@ -66,30 +85,29 @@ func (h *PublicHandler) Projects(c *gin.Context) {
 func (h *PublicHandler) ProjectDetail(c *gin.Context) {
 	slug := c.Param("slug")
 
-	var id int
-	var name, slug2, description, url, iconURL, status string
-	err := h.db.QueryRow(
-		"SELECT id, name, slug, description, url, icon_url, status FROM projects WHERE slug = $1",
-		slug,
-	).Scan(
+	var (
+		id          int
+		name        string
+		slugDB      string
+		description string
+		url         string
+		iconURL     string
+		status      string
+	)
+
+	err := h.db.QueryRow(`
+		SELECT id, name, slug, description, url, icon_url, status
+		FROM projects
+		WHERE slug = $1
+	`, slug).Scan(
 		&id,
 		&name,
-		&slug2,
+		&slugDB,
 		&description,
 		&url,
 		&iconURL,
 		&status,
 	)
-
-	project := map[string]interface{}{
-		"id":          id,
-		"name":        name,
-		"slug":        slug2,
-		"description": description,
-		"url":         url,
-		"icon_url":    iconURL,
-		"status":      status,
-	}
 
 	if err == sql.ErrNoRows {
 		c.HTML(http.StatusNotFound, "error.html", gin.H{
@@ -103,6 +121,16 @@ func (h *PublicHandler) ProjectDetail(c *gin.Context) {
 			"error": "Failed to fetch project",
 		})
 		return
+	}
+
+	project := gin.H{
+		"id":          id,
+		"name":        name,
+		"slug":        slugDB,
+		"description": description,
+		"url":         url,
+		"icon_url":    iconURL,
+		"status":      status,
 	}
 
 	c.HTML(http.StatusOK, "project-detail.html", gin.H{
